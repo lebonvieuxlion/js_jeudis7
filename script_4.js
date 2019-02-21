@@ -92,3 +92,18 @@ console.log(`Nombre d'underscore dans les pseudos ${a}`)
 var arrayNoFirstLetter = arrayOfJournalists.map(journalist => journalist.slice(1));
 console.log(`Liste des journalistes par ordre alphabéthiques : ${arrayNoFirstLetter.sort()}`)
 
+
+//----------------Les 50 handles les plus courts --------------------------
+
+console.log(arrayOfJournalists.sort(function(a, b){return a.length -b.length}).slice(0,50));
+
+
+//---------------Quelle est la position dans l'array de la personne @epenser --------------------------
+
+
+function isequaltostring(element){
+	return element === "@epenser"
+}
+
+console.log(arrayOfJournalists.findIndex(isequaltostring)) // On utilise la fonction plus haut car findIndex ne marche qu'avec une fonction
+
