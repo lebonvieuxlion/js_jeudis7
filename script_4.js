@@ -105,5 +105,7 @@ function isequaltostring(element){
 	return element === "@epenser"
 }
 
-console.log(arrayOfJournalists.findIndex(isequaltostring)) // On utilise la fonction plus haut car findIndex ne marche qu'avec une fonction
+console.log(`Position du handle @enpser : ${arrayOfJournalists.findIndex(isequaltostring)}`) 
+// On utilise la fonction plus haut car findIndex ne marche qu'avec une fonction
+
 
