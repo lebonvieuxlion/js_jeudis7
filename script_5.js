@@ -17,7 +17,7 @@ for(let index in bitcoinNameArray) {
 	hash[bitcoinNameArray[index]] = bitcoinValueArray[index]
 }
 
-console.log(hash)
+console.log(hash);
 
 
 
@@ -47,5 +47,67 @@ function isEqualToMinValue(element){
 	return element === min
 }
 
-postionMinValue =arrayWithFloat.findIndex(isEqualToMinValue)
+postionMinValue =arrayWithFloat.findIndex(isEqualToMinValue);
 console.log(`Crypto avec la plus petite valeur : ${bitcoinNameArray[postionMinValue]}`)
+
+
+
+//---------------Le nombre de crypto contenant le mot "coin" --------------------------
+
+/* Donne 1606 en résultat
+var currenciesWithCoin = 0;
+for(let key in hash) {
+
+	if (Object.keys(hash)[0].includes("coin")){
+		currenciesWithCoin += 1;
+	}
+}
+
+console.log(currenciesWithCoin);
+*/
+
+//Je garde cette méthode car c'est celle qui correspond au bon résultat mais je ne comprend pas pourquoi
+// la précécdente ne fonctionne pas
+var currenciesWithCoinbis = 0;
+for(let key in hash) {
+
+	if (/coin/i.test(key)){
+		currenciesWithCoinbis += 1;
+	}
+}
+
+console.log(`Currencies avec le mot "coin" : ${currenciesWithCoinbis}`);
+
+
+//---------------Les devises, dont le cours est inférieur à 6000 --------------------------
+
+
+var hashUnder6000 = new Object();
+
+Object.keys(hash).forEach(function (key) {
+  	var value = hash[key];
+  	value = value.slice(1);
+  	value = parseFloat(value);
+	if(value < 6000){
+		hashUnder6000[key] = value
+	}
+   // do something with key or value
+});
+console.log("Hash avec les devises inférieures à 6000")
+console.log({hashUnder6000})
+
+
+
+//---------------La devise la plus chère parmi celles dont le cours est inférieur à 6000 --------------------------
+
+arrayOfValuesUnder6000 = Object.values(hashUnder6000)
+arrayOfKeysUnder6000 = Object.keys(hashUnder6000)
+
+max = Math.max.apply(null, arrayOfValuesUnder6000)
+
+function isequaltovalue(element){
+	return element === max
+}
+
+postionMaxValue =arrayOfValuesUnder6000.findIndex(isequaltovalue)
+console.log(`Crypto avec la plus grande valeur parmi les crypto en dessous de 6000$ est ${arrayOfKeysUnder6000[postionMaxValue]} pour le prix de ${arrayOfValuesUnder6000[postionMaxValue]}$`)

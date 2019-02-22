@@ -109,3 +109,4 @@ console.log(`Position du handle @enpser : ${arrayOfJournalists.findIndex(isequal
 // On utilise la fonction plus haut car findIndex ne marche qu'avec une fonction
 
 
+
